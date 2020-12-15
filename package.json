@@ -3,5 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "courtneypattison <courtneyp@ttison.ca>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.1.3"
+  },
+  "scripts": {
+    "ts": "tsc"
+  }
 }
