@@ -1,28 +1,26 @@
-interface CharacterDict {
-    [character: string]: number;
-}
-
-function getCharFreqTable(str: string): CharacterDict {
-    let charDict: CharacterDict = {};
+function getCharFreqTable(str: string): Map<string, number> {
+    let charFreq = new Map;
     for (let i = 0; i < str.length; i++) {
-        if (charDict[str[i]]) {
-            charDict[str[i]]++;
+        const charCount = charFreq.get(str[i]);
+        if (charCount) {
+            charFreq.set(str[i], charCount + 1);
         } else {
-            charDict[str[i]] = 1;
+            charFreq.set(str[i], 1);
         }
     }
-    return charDict;
+    return charFreq;
 }
 
 export default function isPermutation(str1: string, str2: string): Boolean {
     if (str1.length != str2.length) return false;
 
-    let charDict = getCharFreqTable(str1);
+    let charFreq = getCharFreqTable(str1);
 
     for (let i = 0; i < str2.length; i++) {
-        if (charDict[str2[i]]) {
-            charDict[str2[i]]--;
-            if (charDict[str2[i]] < 0) {
+        const charCount = charFreq.get(str2[i]);
+        if (charCount) {
+            charFreq.set(str2[i], charCount - 1);
+            if (charCount < 0) {
                 return false;
             }
         } else {
