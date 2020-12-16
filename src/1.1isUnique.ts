@@ -2,7 +2,7 @@ interface Dictionary {
     [key: string]: Boolean
 }
 
-function allUniqueChararacters(string: string) {
+export function allUniqueChars(string: string) {
     var characters: Dictionary = {}
     for (let c of string) {
         if (characters[c]) return false;
@@ -11,9 +11,6 @@ function allUniqueChararacters(string: string) {
     return true;
 }
 
-function allUniqueChararactersSet(string: string) {
+export function allUniqueCharsSet(string: string) {
     return new Set([...string]).size == [...string].length;
 }
-
-console.log(allUniqueChararacters('🍎🍎abc'))
-console.log(allUniqueChararactersSet('🍎abcå'))
