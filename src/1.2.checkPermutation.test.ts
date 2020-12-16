@@ -1,6 +1,6 @@
 import isPermutation from './1.2checkPermutation';
 
-describe('isPermutation', () => {
+describe('checkPermutation', () => {
     test('"strttyv" is a permutation of "srtttvy"', () => {
         expect(isPermutation("strttyv", "srtttvy")).toBeTruthy;
     });
