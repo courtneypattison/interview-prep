@@ -13,7 +13,7 @@
   },
   "scripts": {
     "test": "jest",
-    "ts": "tsc"
+    "ts": "tsc --watch"
   },
   "dependencies": {
     "lodash": "^4.17.20"
