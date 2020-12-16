@@ -1,4 +1,4 @@
-const isPermutation = require('./1.2checkPermutation');
+import isPermutation from './1.2checkPermutation';
 
 describe('isPermutation', () => {
     test('"strttyv" is a permutation of "srtttvy"', () => {
