@@ -14,3 +14,7 @@ export default function replaceSpaces(str: string): string {
 
 	return url.join("");
 }
+
+export function replaceSpacesRegex(str: string): string {
+	return str.trim().replace(/\s+/g, '%20')
+}
