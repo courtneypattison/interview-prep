@@ -51,3 +51,36 @@ export function isPalindromePermutationBoolean(str: string): boolean {
 
     return oddChars.size <= 1;
 }
+
+export function isPalindromePermutationBit(str: string): boolean {
+    let bitVector = createBitVector(str);
+    return bitVector == 0 || exactlyOneBitSet(bitVector);
+}
+
+function createBitVector(str: string): number {
+    let bitVector = 0;
+
+    for (let c of [...str]) {
+        if (isSpace(c)) continue;
+        const charCode = c.charCodeAt(0);
+        bitVector = toggle(bitVector, charCode);
+    }
+
+    return bitVector;
+}
+
+function toggle(bitVector: number, index: number): number {
+    let mask = 1 << index;
+
+    if ((bitVector & mask) == 0) {
+        bitVector |= mask;
+    } else {
+        bitVector &= ~mask;
+    }
+
+    return bitVector;
+}
+
+function exactlyOneBitSet(bitVector: number): boolean {
+    return (bitVector & (bitVector - 1)) == 0;
+}
