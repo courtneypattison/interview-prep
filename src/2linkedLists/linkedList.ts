@@ -8,8 +8,7 @@ export class ListNode {
 }
 
 class LinkedList {
-  private next: ListNode | null = null;
-  public length = 0;
+  public next: ListNode | null = null;
 
   /**
    * insertAfter
@@ -17,8 +16,8 @@ class LinkedList {
   public insertAfter(node: ListNode, newNode: ListNode) {
     const currentNode = this.getNode(node);
     if (currentNode) {
+      newNode.next = currentNode.next;
       currentNode.next = newNode;
-      this.length++;
     }
   }
 
@@ -29,7 +28,6 @@ class LinkedList {
     if (newNode) {
       newNode.next = this.next;
       this.next = newNode;
-      this.length++;
     }
   }
 
@@ -42,7 +40,6 @@ class LinkedList {
     if (currentNode && currentNode.next) {
       removedNode = currentNode.next;
       currentNode.next = currentNode.next.next;
-      this.length--;
     }
     return removedNode;
   }
@@ -54,7 +51,6 @@ class LinkedList {
     let removedNode = null;
     if (this.next) {
       removedNode = this.next;
-      this.length--;
       if (this.next.next) {
         this.next = this.next.next;
       }
@@ -67,7 +63,7 @@ class LinkedList {
    */
   public traverse(callback: Function) {
     let currentNode = this.next;
-    while (currentNode && currentNode !== null) {
+    while (currentNode) {
       callback(currentNode);
       currentNode = currentNode.next;
     }

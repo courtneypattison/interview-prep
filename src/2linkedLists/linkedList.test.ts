@@ -7,7 +7,7 @@ describe("LinkedList", () => {
   it("inserts in beginning", () => {
     const list = new LinkedList();
     list.insertBeginning(courtneyNode);
-    expect(list.length).toEqual(1);
+    expect(list.next?.data).toEqual(courtneyNode.data);
   });
 
   it("inserts after", () => {
@@ -23,7 +23,6 @@ describe("LinkedList", () => {
     list.insertAfter(courtneyNode, shenziNode);
     const removedNode = list.removeAfter(courtneyNode);
     expect(removedNode).toEqual(shenziNode);
-    expect(list.length).toEqual(1);
   });
 
   it("removes beginning", () => {
@@ -32,7 +31,6 @@ describe("LinkedList", () => {
     list.insertAfter(courtneyNode, shenziNode);
     const removedNode = list.removeBeginning();
     expect(removedNode).toEqual(courtneyNode);
-    expect(list.length).toEqual(1);
   });
 
   it("removes beginning when one", () => {
@@ -40,14 +38,12 @@ describe("LinkedList", () => {
     list.insertBeginning(courtneyNode);
     const removedNode = list.removeBeginning();
     expect(removedNode).toEqual(courtneyNode);
-    expect(list.length).toEqual(0);
   });
 
   it("removes nothing when empty", () => {
     const list = new LinkedList();
     const removedNode = list.removeBeginning();
     expect(removedNode).toBeFalsy();
-    expect(list.length).toEqual(0);
   });
 
   it("traverses list", () => {
